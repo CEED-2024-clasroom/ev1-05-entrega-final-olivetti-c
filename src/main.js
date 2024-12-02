@@ -294,24 +294,31 @@ revealFiveLettersButton.addEventListener('click', () => {
 const blackOverlay = document.getElementById('black');
 const gameDiv = document.getElementById('game');
 
+// Definir la función del evento para el botón de martillo
+function helpEvent(event) {
+    if (event.target.classList.contains('letter')) {
+        let correctLetter = game.letterAt(event.target.getAttribute('data-x'), event.target.getAttribute('data-y'));
+        console.log(correctLetter);
+        event.target.textContent = correctLetter;
+        blackOverlay.classList.add('hidden');
+        document.querySelectorAll('.letter').forEach(letter => {
+            letter.classList.remove('on-top');
+        });
+        gameDiv.removeEventListener('mousedown', helpEvent);
+    } else {
+        blackOverlay.classList.add('hidden');
+        document.querySelectorAll('.letter').forEach(letter => {
+            letter.classList.remove('on-top');
+        });
+        gameDiv.removeEventListener('mousedown', helpEvent);
+    }
+}
+
 // Añadir evento para el botón de martillo
 revealSelectedLetterButton.addEventListener('click', () => {
-    // Habilitar el modo de selección de casilla
     blackOverlay.classList.remove('hidden');
     document.querySelectorAll('.letter').forEach (letter => {
         letter.classList.add('on-top');
     });
+    gameDiv.addEventListener('mousedown', helpEvent);
 });
-
-    // Añadir evento para permitir seleccionar una casilla
-    gameDiv.addEventListener('mousedown', (event) => {
-        if (event.target.classList.contains('letter')) {
-            //correctLetter = game.letterAt(event.target.getAttribute('data-x'), event.target.getAttribute('data-y'));
-            event.target.textContent = 'X';
-        } else {
-            blackOverlay.classList.add('hidden');
-            document.querySelectorAll('.letter').forEach (letter => {
-                letter.classList.remove('on-top');
-            });
-        }
-    });
