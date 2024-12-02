@@ -1,0 +1,22 @@
+{
+  "name": "proyecto",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "eslint": "eslint",
+    "eslintfile": "eslint -- "
+  },
+  "devDependencies": {
+    "eslint": "^9.11.1",
+    "eslint-plugin-html": "^8.1.2",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1"
+  }
+}
